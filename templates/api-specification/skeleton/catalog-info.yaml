@@ -10,9 +10,9 @@ metadata:
     - url: ${{ values.service_registry_provider_url }}/ui/artifacts/${{ values.group_id }}/${{ values.api_id }}/versions/latest
       title: Apicurio Registry
       icon: web
-    - url: ${{ mock_provider_url }}/#/services?name=${{ values.api_id }}
+    - url: ${{ values.mock_provider_url }}/#/services?name=${{ values.api_id }}
       title: Microcks
-    - url: ${{ mock_provider_url }}/rest/ratings/v1
+    - url: ${{ values.mock_provider_url }}/rest/ratings/v1
       title: Mock
       icon: web
 spec:
