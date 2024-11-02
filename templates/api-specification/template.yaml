@@ -127,7 +127,7 @@ spec:
 
   output:
     links:
-      - title: Pull Request to Domain
+      - title: Pull Request to System
         url: ${{ steps.pr.output.remoteUrl }}
       - title: Repository
         url: ${{ steps.publish.output.remoteUrl }}
