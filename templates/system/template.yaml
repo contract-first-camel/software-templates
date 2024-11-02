@@ -31,11 +31,7 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             allowedKinds: 
-              - Group
-        cluster_domain:
-          title: Cluster domain
-          type: string
-          description: Cluster domain (like apps.example.com)        
+              - Group      
 
   steps:
 
