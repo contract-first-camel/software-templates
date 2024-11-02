@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: system-template
   title: System Template
-  description: Create a System to contain a set of application Components, APIs, and Resources (v0.2)
+  description: Create a System to contain a set of application Components, APIs, and Resources (v0.3)
 spec:
   owner: service@example.com
   type: system
@@ -75,7 +75,7 @@ spec:
           owner: ${{ parameters.owner }}
         targetPath: ./domain-gitops  
 
-    - id: pull-request-to-domain
+    - id: pr
       name: open domain pull request
       action: publish:github:pull-request
       input:
@@ -88,7 +88,7 @@ spec:
   output:
     links:
       - title: Pull Request to Domain
-        url: ${{ steps.pull-request-to-domain.output.remoteUrl }}
+        url: ${{ steps.pr.output.remoteUrl }}
       - title: Repository
         url: ${{ steps.publish.output.remoteUrl }}
       - title: Open in catalog
