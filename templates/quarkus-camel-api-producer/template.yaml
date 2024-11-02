@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: quarkus-camel-api-producer-template
   title: Quarkus Camel REST server
-  description: Create a REST service using Camel with Quarkus (v0.1)
+  description: Create a REST service using Camel with Quarkus (v0.2)
 spec:
   owner: service@example.com
   type: service
@@ -14,7 +14,6 @@ spec:
         - component_id
         - owner
         - java_group_id
-        - java_package
         - application
         - description
         - api
@@ -26,11 +25,8 @@ spec:
         java_group_id:
           title: Group Name
           type: string
-          description: Name for the group id, eg. (backstage in my.group)
-        java_package:
-          title: Java Package Name
-          type: string
-          description: Name for the java package. eg (package in my.package.name)
+          description: Name for the group id
+          default: com.redhat
         description:
           title: Description
           type: string
@@ -73,15 +69,15 @@ spec:
           ui:options:
             allowedKinds:
             - API
-        service_registry_provider_url:
-          title: Service Registry Provider URL
-          type: string
-          description: Apicurio Registry Host
-          default: https://registry-apicurio-registry.apps.cluster-example.com
         service_registry_group_id:
           title: Service Registry Group ID
           type: string
           default: com.redhat
+        cluster_domain:
+          title: Cluster domain
+          type: string
+          description: Cluster domain (like apps.example.com)
+          default: apps.cluster-example.opentlc.com
 
   steps:
     - id: template
@@ -96,7 +92,7 @@ spec:
           artifact_id: ${{ parameters.component_id }}
           folder_java_package: ${{ parameters.java_package | replace('.', '/') }}
           java_group_id: ${{ parameters.java_group_id }}
-          java_package: ${{ parameters.java_package }}
+          java_package: ${{ parameters.java_group_id }}.${{ parameters.component_id }}
           owner: ${{ parameters.owner }}
           destination: https://github.com/contract-first-idp/${{ parameters.application.split("/")[1] }}-${{ parameters.component_id }}-service
           project_slug: contract-first-idp/${{ parameters.application.split("/")[1] }}-${{ parameters.component_id }}-service
@@ -104,7 +100,7 @@ spec:
           service_id: ${{ parameters.component_id }}-service
           system_label: system=${{ parameters.application.split("/")[1] }}
           api_id: ${{ parameters.api.split("/")[1] }}
-          service_registry_provider_url: ${{ parameters.service_registry_provider_url }}
+          service_registry_provider_url: https://registry-apicurio-registry.${{ parameters.cluster_domain }}
           service_registry_group_id: ${{ parameters.service_registry_group_id }}
 
     - id: publish
