@@ -164,7 +164,7 @@ spec:
           deployment: ${{ parameters.deployment }}
         targetPath: ./system-gitops
 
-    - id: pull-request
+    - id: pr
       name: Open PR to System
       action: publish:github:pull-request
       input:
@@ -176,6 +176,8 @@ spec:
 
   output:
     links:
+      - title: Pull Request to System
+        url: ${{ steps.pr.output.remoteUrl }}
       - title: Repository
         url: ${{ steps.publish.output.remoteUrl }}
       - title: Open in catalog
