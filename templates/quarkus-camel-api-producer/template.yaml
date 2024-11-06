@@ -93,7 +93,7 @@ spec:
           artifact_id: ${{ parameters.component_id }}
           folder_java_package: ${{ parameters.java_package | replace('.', '/') }}
           java_group_id: ${{ parameters.java_group_id }}
-          java_package: ${{ parameters.java_group_id }}.${{ parameters.component_id }}
+          java_package: ${{ parameters.java_group_id }}.${{ parameters.application.split("/")[1] }}.${{ parameters.component_id }}
           owner: ${{ parameters.owner }}
           destination: https://github.com/contract-first-camel/${{ parameters.application.split("/")[1] }}-${{ parameters.component_id }}-service
           project_slug: contract-first-camel/${{ parameters.application.split("/")[1] }}-${{ parameters.component_id }}-service
