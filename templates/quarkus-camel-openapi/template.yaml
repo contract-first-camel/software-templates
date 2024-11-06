@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: quarkus-camel-openapi-template
   title: Quarkus Camel Open API
-  description: OpenAPI server and client using Camel with Quarkus (v0.4)
+  description: OpenAPI server and client using Camel with Quarkus (v0.5)
 spec:
   owner: service@example.com
   type: service

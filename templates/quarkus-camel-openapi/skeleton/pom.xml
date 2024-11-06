@@ -272,7 +272,7 @@
                         <artifact>
                             <groupId>${{ values.service_registry_group_id }}</groupId>
                             <artifactId>${{ values.consumed_api_id }}</artifactId>
-                            <file>${project.basedir}/src/main/openapi/${{ values.consumed.api_id }}-api.json</file>
+                            <file>${project.basedir}/src/main/openapi/${{ values.consumed_api_id }}-api.json</file>
                             <overwrite>true</overwrite>
                         </artifact>
                     </artifacts>
