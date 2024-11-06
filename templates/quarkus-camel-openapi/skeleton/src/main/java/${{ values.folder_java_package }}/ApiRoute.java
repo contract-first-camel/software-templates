@@ -17,7 +17,7 @@ public class ApiRoute extends RouteBuilder {
 
         from("direct:sampleOperationId")
                 .removeHeaders("*")
-                .to("rest-openapi:${{ values.consumed_api_id }}-api.json#sampleOperationId?host={{openapi.client.${{ values.consumed_api_id }}.host}}");
+                .to("rest-openapi:${{ values.consumed_api_id }}-api.json#${{ values.consumed_api_operation }}?host={{openapi.client.${{ values.consumed_api_id }}.host}}");
 
     }
 }

@@ -18,6 +18,7 @@ spec:
         - description
         - api
         - consumed_api
+        - consumed_api_operation
         - cluster_domain
       properties:
         component_id:
@@ -79,6 +80,9 @@ spec:
           ui:options:
             allowedKinds:
             - API
+        consumed_api_operation:
+          title: Operation to invoke on the consumed API
+          type: string
         service_registry_group_id:
           title: Service Registry Group ID
           type: string
@@ -111,6 +115,7 @@ spec:
           system_label: system=${{ parameters.application.split("/")[1] }}
           api_id: ${{ parameters.api.split("/")[1] }}
           consumed_api_id: ${{ parameters.consumed_api.split("/")[1] }}
+          consumed_api_operation: ${{ parameters.consumed_api_operation }}
           service_registry_provider_url: https://registry-apicurio-registry.${{ parameters.cluster_domain }}
           service_registry_group_id: ${{ parameters.service_registry_group_id }}
 
