@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: quarkus-camel-openapi-template
   title: Quarkus Camel Open API
-  description: Create a REST service that consumes another REST service using Camel with Quarkus (v0.1)
+  description: Create a REST service that consumes another REST service using Camel with Quarkus (v0.2)
 spec:
   owner: service@example.com
   type: service
@@ -17,7 +17,7 @@ spec:
         - application
         - description
         - api
-        - consumed_api
+        - clientapi
         - cluster_domain
       properties:
         component_id:
@@ -71,7 +71,7 @@ spec:
           ui:options:
             allowedKinds:
             - API
-        consumed_api:
+        clientapi:
           title: Consumed API
           type: string
           description: The API being consumed
@@ -110,7 +110,7 @@ spec:
           service_id: ${{ parameters.component_id }}-service
           system_label: system=${{ parameters.application.split("/")[1] }}
           api_id: ${{ parameters.api.split("/")[1] }}
-          consumed_api_id: ${{ parameters.consumed_api.split("/")[1] }}
+          consumed_api_id: ${{ parameters.clientapi.split("/")[1] }}
           service_registry_provider_url: https://registry-apicurio-registry.${{ parameters.cluster_domain }}
           service_registry_group_id: ${{ parameters.service_registry_group_id }}
 
