@@ -17,7 +17,7 @@ spec:
         - application
         - description
         - api
-        - clientapi
+        - consumed_api
         - cluster_domain
       properties:
         component_id:
@@ -71,7 +71,7 @@ spec:
           ui:options:
             allowedKinds:
             - API
-        clientapi:
+        consumed_api:
           title: Consumed API
           type: string
           description: The API being consumed
@@ -100,7 +100,7 @@ spec:
           component_id: ${{ parameters.component_id }}
           description: ${{ parameters.description }}
           artifact_id: ${{ parameters.component_id }}
-          folder_java_package: ${{ parameters.java_package | replace('.', '/') }}
+          folder_java_package: ${{ parameters.java_group_id | replace('.', '/') }}/${{ parameters.application.split("/")[1] }}/${{ parameters.component_id }}
           java_group_id: ${{ parameters.java_group_id }}
           java_package: ${{ parameters.java_group_id }}.${{ parameters.application.split("/")[1] }}.${{ parameters.component_id }}
           owner: ${{ parameters.owner }}
@@ -110,7 +110,7 @@ spec:
           service_id: ${{ parameters.component_id }}-service
           system_label: system=${{ parameters.application.split("/")[1] }}
           api_id: ${{ parameters.api.split("/")[1] }}
-          consumed_api_id: ${{ parameters.clientapi.split("/")[1] }}
+          consumed_api_id: ${{ parameters.consumed_api.split("/")[1] }}
           service_registry_provider_url: https://registry-apicurio-registry.${{ parameters.cluster_domain }}
           service_registry_group_id: ${{ parameters.service_registry_group_id }}
 
